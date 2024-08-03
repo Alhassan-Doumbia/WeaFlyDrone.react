@@ -12,6 +12,21 @@ function DataContainer() {
     AtmosphericPres:"???",
     weather:"???",
   });
+const UpdateWeatherData=()=>{
+  //ici on va charger les données du fichier JSON
+  // on va d'abord importer le module fs 
+  const fs=require('fs');
+  fs.readFile('../utils/jsons/DataHub.json','utf8',(err,data)=>{
+    if(err){
+      console.error(`error while reading the daata hub file : ${err}`)
+      return;
+    }
+    const dataObj=JSON.parse(data);// convertir les données contenues dans le fichier en bjet javacript manipulable ;
+    console.log(`les données du fichiers JSON : ${dataObj}`);// debug
+  })
+  UpdateWeatherData();
+
+}
   return (
     <>
          <div className="Container flex flex-col gap-2 ">

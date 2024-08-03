@@ -11,7 +11,7 @@ function HistoryContainer() {
                 <p className=' font-Poppins font-semibold text-xl text-slate-50'>Historique de recherche </p>
             </div>
             <div className="History flex flex-col gap-1 w-full h-[200px]">
-                {History.map((item, index) => (<li className=' list-none font-light font-Montserrat '>
+                {History.map((item, index) => (<li key={index} className=' list-none font-light font-Montserrat '>
                     <p className='text-sm text-slate-50'>{item}</p>
                 </li>))}
             </div>

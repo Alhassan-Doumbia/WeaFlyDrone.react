@@ -1,0 +1,45 @@
+{
+  "coord": {
+    "lon": -4.0197,
+    "lat": 5.3094
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 299.13,
+    "feels_like": 299.13,
+    "temp_min": 299.13,
+    "temp_max": 299.13,
+    "pressure": 1012,
+    "humidity": 83,
+    "sea_level": 1012,
+    "grnd_level": 1012
+  },
+  "visibility": 9000,
+  "wind": {
+    "speed": 4.63,
+    "deg": 230
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1722446869,
+  "sys": {
+    "type": 1,
+    "id": 1162,
+    "country": "CI",
+    "sunrise": 1722406312,
+    "sunset": 1722450772
+  },
+  "timezone": 0,
+  "id": 2293538,
+  "name": "Abidjan",
+  "cod": 200
+}
