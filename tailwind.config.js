@@ -13,6 +13,12 @@ export default {
         'Montserrat':'Montserrat',
         'Poppins':'Poppins',
       },
+      colors:{
+        borderColor:"#CACACA",
+        linkColor:"#3254CE",
+        primary:"#000000",
+        secondary:"#11A37F"
+      }
     
     },
   },

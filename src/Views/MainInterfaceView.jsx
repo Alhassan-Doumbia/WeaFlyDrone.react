@@ -1,7 +1,5 @@
 import React from "react";
 import NavbarComponent from "../Components/NavbarComponent";
-import SearchInputComponent from "../Components/SearchInputComponent";
-import HistoryContainer from "../Components/HistoryContainer";
 import Diagnosis from "../Components/Diagnosis";
 import WeatherSummary from "../Components/WeatherSummary";
 import FetchWeatherData from "../Functions/FetchWeatherData";

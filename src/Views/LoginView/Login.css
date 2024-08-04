@@ -1,0 +1,6 @@
+#leftContainer{
+    background-image:url("../../assets/images/Drone.jpg");
+    background-size: cover;
+    background-position: center;
+    filter:brightness(0.8);
+}

@@ -1,10 +1,12 @@
 
 async function FetchWeatherData(city){
+    const ApiKey=localStorage.getItem('API_key');
     const url = `https://weather-api138.p.rapidapi.com/weather?city_name=${city}`;
     const options = {
         method: 'GET',
         headers: {
             'x-rapidapi-key':"45539c1454mshe2988be1e97c2cfp173326jsn950d6de2fb8f", //process.env.API_KEY,//ive to use .env element to hide the API key 
+            // Remplacer la clé d'API par la variable ApiKey ; 
             'x-rapidapi-host': 'weather-api138.p.rapidapi.com'
         }
     };

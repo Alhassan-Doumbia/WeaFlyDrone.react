@@ -1,16 +1,11 @@
 import React from 'react'
-import HistoryContainer from '../Components/HistoryContainer'
-import DataContainer from '../Components/DataContainer'
-import Diagnosis from '../Components/Diagnosis'
-import WeatherSummary from '../Components/WeatherSummary'
-import SearchInputComponent from '../Components/SearchInputComponent'
+import Form from '../Components/Form/Form'
+import LoginPage from '../Pages/LoginPage'
 function PG() {
   return (
    <div className='px-[10px] flex flex-col gap-4 items-center justify-center bg-slate-600 '>
-      <HistoryContainer>
-      </HistoryContainer>
-      <DataContainer></DataContainer>
-      <SearchInputComponent></SearchInputComponent>
+      <LoginPage></LoginPage>
+
    </div>
   )
 }
