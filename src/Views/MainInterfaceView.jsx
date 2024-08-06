@@ -5,9 +5,10 @@ import WeatherSummary from "../Components/WeatherSummary";
 import FetchWeatherData from "../Functions/FetchWeatherData";
 
 import { useState } from "react";
+import { useRef } from "react";
 function MainInterfaceView() {
   const [weatherData, setWeatherData] = useState({
-    temperature: "bonsoir",
+    temperature: "???",
     humidity: "???",
     windSpeed: "???",
     AtmosphericPres: "???",
@@ -21,32 +22,41 @@ function MainInterfaceView() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // state pour l'historique
-  const [History, setHistory] = useState([
-    "bonjour",
-    "bonsoir",
-    "bonne arrivée",
-  ]);
+  const [History, setHistory] = useState([]);// on mettra dans le tableau , les noms contenu dans l'historique via useRef 
 
   // Gestion de la mise à jour de la requête de recherche
   const handleSearchQuery = (e) => {
     setSearchQuery(e.target.value);
   };
 
+// Référence pour l'input
+const inputRef = useRef(null);
+
   // Fonction pour mettre à jour les données météo
   const UpdateWeatherData = async () => {
     let datas = await FetchWeatherData(searchQuery);
     console.log(datas);
+
+    // Convertir les valeurs en unités métriques
+    const temperatureInCelsius = datas.main.temp-273.15;
+    const windSpeedInMs = datas.wind.speed; 
+    const atmosphericPressureInHpa = datas.main.pressure; // Already in hPa
+
     setWeatherData({
-      temperature: datas.main.temp,
-      humidity: datas.main.humidity,
-      windSpeed: datas.wind.speed,
-      AtmosphericPres: datas.main.pressure,
+      temperature: temperatureInCelsius.toFixed(2) ,
+      humidity: datas.main.humidity + ' %',
+      windSpeed: windSpeedInMs.toFixed(2) + ' m/s',
+      AtmosphericPres: atmosphericPressureInHpa.toFixed(2) + ' hPa',
       weather: datas.weather[0].main,
       city: datas.name,
       country: datas.sys.country
     });
-  };
 
+    // Réinitialiser l'input
+    inputRef.current.value = "";
+    setSearchQuery("");
+    
+  };
 
   return (
     <>
@@ -56,11 +66,11 @@ function MainInterfaceView() {
           <WeatherSummary city={weatherData.city} country={weatherData.country} weather={weatherData.weather} temperature={weatherData.temperature}/>
           <Diagnosis />
         </div>
-        <div className="DataContainer w-[30%] bg-[#343333] opacity-65 gap-8"> 
+        <div className="DataContainer w-[30%] bg-[#343333] opacity-1 gap-8"> 
           <form>
-            <input type="text" className="px-4 w-[85%] h-[64px] font-mono text-sm outline-none placeholder:text-sm placeholder:font-mono text-slate-50 placeholder:text-slate-400  bg-[#262626]" placeholder="type your research here" onChange={handleSearchQuery}></input>
-            <input type="button" value="send"  className="w-[15%] h-[62px] bg-[#11A37F] cursor-pointer font-Poppins font-semibold text-slate-50  " onClick={UpdateWeatherData} />
-        </form>
+            <input ref={inputRef} type="text" className="px-4 w-[85%] h-[64px] font-mono text-sm outline-none placeholder:text-sm placeholder:font-mono text-slate-50 placeholder:text-slate-400  bg-[#262626]" placeholder="type your research here" onChange={handleSearchQuery}></input>
+            <input type="button" value="send"  className="w-[15%] h-[62px] bg-[#11A37F] hover:bg-green-800 duration-200 cursor-pointer font-Poppins font-semibold text-slate-50  " onClick={() => { UpdateWeatherData(); setSearchQuery(''); }} />
+          </form>
 
           <div className="w-full h-fit px-[20px]">
             <div className="Container flex flex-col gap-2 ">
