@@ -1,11 +1,11 @@
-import React from 'react'
-import MainInterfaceView from '../Views/MainInterfaceView'
+import React from "react";
+import MainInterfaceView from "../Views/MainInterfaceView/MainInterfaceView";
 
-const MainInterfacePage=()=>{
+const MainInterfacePage = () => {
   return (
     <>
-        <MainInterfaceView/>
+      <MainInterfaceView />
     </>
-  )
-}
-export default MainInterfacePage
+  );
+};
+export default MainInterfacePage;
