@@ -3,7 +3,7 @@ import NavbarComponent from "../../Components/NavbarComponent";
 import Diagnosis from "../../Components/Diagnosis";
 import WeatherSummary from "../../Components/WeatherSummary";
 import FetchWeatherData from "../../Functions/FetchWeatherData";
-
+import './MainInterfaceStyle.css'
 import { useState } from "react";
 import { useRef } from "react";
 function MainInterfaceView() {
@@ -101,13 +101,13 @@ function MainInterfaceView() {
                 </p>
               </div>
               <div
-                className="History flex flex-col gap-1 w-full h-[200px]"
+                className="History flex flex-col gap-1 w-full py-2 pt-8"
                 id="historyDisplay"
               >
                 {noDublonsHistory.map((item, index) => (
                   <li
                     key={index}
-                    className=" list-none font-light font-Montserrat w-full h-30 py-4 cursor-pointer hover:bg-slate-900 hover:bg-opacity-60 duration-150 ease-linear border-[1px] border-slate-50 border-opacity-10"
+                    className=" list-none font-light font-Montserrat w-full h-30 py-4 cursor-pointer hover:bg-slate-900 hover:bg-opacity-60 duration-150 ease-linear "
                   >
                     <p className="text-sm text-slate-50 w-full h-full px-4 hover:opacity-100 duration-150 ease-linear ">
                       {item}
