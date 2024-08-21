@@ -23,6 +23,7 @@ function MainInterfaceView() {
 
   // state pour l'historique
   const [History, setHistory] = useState([]);// on mettra dans le tableau , les noms contenu dans l'historique via useRef 
+  let noDublonsHistory=Array.from(new Set(History));
 
   // Gestion de la mise à jour de la requête de recherche
   const handleSearchQuery = (e) => {
@@ -51,6 +52,8 @@ const inputRef = useRef(null);
       city: datas.name,
       country: datas.sys.country
     });
+    // Ajouter la requête de recherche à l'historique
+    setHistory([...History, searchQuery]);
 
     // Réinitialiser l'input
     inputRef.current.value = "";
@@ -80,12 +83,12 @@ const inputRef = useRef(null);
                 </p>
               </div>
               <div className="History flex flex-col gap-1 w-full h-[200px]">
-                {History.map((item, index) => (
+                {noDublonsHistory.map((item, index) => (
                   <li
                     key={index}
-                    className=" list-none font-light font-Montserrat "
+                    className=" list-none font-light font-Montserrat w-full h-30 py-4 cursor-pointer hover:bg-slate-900 hover:bg-opacity-60 duration-150 ease-linear"
                   >
-                    <p className="text-sm text-slate-50">{item}</p>
+                    <p className="text-sm text-slate-50 w-full h-full px-4 hover:opacity-100 duration-150 ease-linear ">{item}</p>
                   </li>
                 ))}
               </div>
